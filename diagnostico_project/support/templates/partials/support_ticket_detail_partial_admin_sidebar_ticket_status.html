@@ -1,0 +1,36 @@
+<div class="card mb-2">
+    <div class="card-header">
+        Estado del ticket
+    </div>
+
+    <div class="card-body">
+        <div class="list-group">
+            <form method="post" action="{{ ticket.id }}/change_status">
+                {% csrf_token %}
+
+                <button type="submit" name="status" value="pending" class="list-group-item list-group-item-danger list-group-item-action">
+                    {% if ticket.status == 'pending' %}<strong>{% endif %}
+                    Pendiente
+                    {% if ticket.status == 'pending' %}</strong>{% endif %}
+                </button>
+
+                <button type="submit" name="status" value="working" class="list-group-item list-group-item-warning list-group-item-action">
+                    {% if ticket.status == 'working' %}<strong>{% endif %}
+                    En proceso
+                    {% if ticket.status == 'working' %}</strong>{% endif %}
+                </button>
+
+                <button type="submit" name="status" value="solved" class="list-group-item list-group-item-success list-group-item-action">
+                    {% if ticket.status == 'solved' %}<strong>{% endif %}
+                    Terminado
+                    {% if ticket.status == 'solved' %}</strong>{% endif %}
+                </button>
+            </form>
+        </div>
+
+        <small>
+            Usa esta sección para cambiar el estado del ticket. Al momento de cambiar el estado se le enviará un correo
+            al usuario indicando que hubo modificaciones.
+        </small>
+    </div>
+</div>

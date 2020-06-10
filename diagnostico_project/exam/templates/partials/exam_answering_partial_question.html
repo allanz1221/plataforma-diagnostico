@@ -1,0 +1,19 @@
+<div class="question question-{{ question.id }} mt-4 mb-4">
+    <span style="font-weight: bold;">
+        <li><span style="font-weight: normal;">{{ question.text|safe }}</span></li>
+
+            {% if question.image %}
+                <div class="question-image mt-2 mb-2">
+                <img src="{{ question.image.url }}" height="100px" alt="Imagen {{ question.id }}">
+            </div>
+            {% endif %}
+
+            <ol class="mt-2" style="font-weight: bold;">
+            {% for answer in question.answer_set.all %}
+                <li type="a">
+                    {% include 'partials/exam_answering_partial_answer.html' %}
+                </li>
+            {% endfor %}
+        </ol>
+    </span>
+</div>

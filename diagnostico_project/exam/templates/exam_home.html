@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Examen diagnóstico - Inicio{% endblock title %}
+{% block header_title %}Examen diagnóstico{% endblock header_title %}
+{% block header_subtitle %}Inicio{% endblock header_subtitle %}
+{% block header_icon %}exam{% endblock header_icon %}
+
+{% block content %}
+
+    {% include 'partials/exam_home_partial_instructions.html' %}
+
+    {% include 'partials/exam_home_partial_recommendations.html' %}
+
+    {% include 'partials/exam_home_partial_confirm.html' %}
+
+    <!-- Modals -->
+    {% include 'modals/exam_home_confirmation_modal.html' %}
+
+{% endblock content %}

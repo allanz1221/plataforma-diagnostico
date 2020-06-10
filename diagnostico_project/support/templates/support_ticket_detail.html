@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load documents_extras %}
+
+{% block title %}Soporte{% endblock title %}
+{% block header_title %}Soporte{% endblock header_title %}
+{% block header_subtitle %}
+    En caso de que tengas algún problema con tu admisión, puedes contactar al equipo técnico por este medio
+{% endblock header_subtitle %}
+{% block header_icon %}support{% endblock header_icon %}
+
+{% block content %}
+
+    {% include 'partials/support_ticket_detail_partial_opening_post.html' %}
+
+    <h3 class="mb-3 mt-3">Comentarios</h3>
+
+    {% if ticket.comments.all %}
+        {% for comment in ticket.comments.all %}
+            {% include 'partials/support_ticket_detail_partial_comment.html' %}
+        {% endfor %}
+    {% else %}
+        <div class="mt-4 mb-4">
+            <p>¡No hay ningún comentario!</p>
+        </div>
+    {% endif %}
+
+    <h4 class="mb-3 mt-3">Añadir comentario</h4>
+
+    {% if ticket.status == 'solved' %}
+        <div class="mt-4 mb-4">
+            <p>¡El ticket ya está cerrado, no puedes agregar nuevos comentarios!</p>
+        </div>
+    {% else %}
+        {% include 'partials/support_ticket_detail_partial_comment_form.html' %}
+    {% endif %}
+
+    <!-- Modals -->
+    {% include 'modals/reset_exam_modal.html' %}
+
+{% endblock %}
+
+{% block sidebar_content %}
+
+    {% if request.user.is_staff %}
+        {% include 'partials/support_ticket_detail_partial_admin_sidebar.html' %}
+    {% endif %}
+
+{% endblock sidebar_content %}

@@ -1,0 +1,14 @@
+{% extends 'email_base.html' %}
+
+{% block email_title %}
+    Ticket cerrado: {{ ticket.title }}
+{% endblock email_title %}
+
+{% block email_content %}
+    <p>
+        ¡Hola, {{ ticket.user.nombre|title }}! Se te está enviando este correo para informarte que el ticket de
+        soporte número {{ ticket.id }}, titulado "{{ ticket.title }}" ha sido cerrado por un administrador.
+        Si tienes algún otro problema con la plataforma o duda con el proceso de inscripción, no dude en volver a
+        abrir otro ticket en la sección de soporte.
+    </p>
+{% endblock email_content %}

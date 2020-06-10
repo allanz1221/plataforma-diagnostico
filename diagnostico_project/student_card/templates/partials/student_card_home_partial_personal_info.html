@@ -1,0 +1,71 @@
+<h4>
+    Datos Personales
+</h4>
+
+<p>A continuación se presentan los datos que se capturaron al momento de registarte como aspirante:</p>
+<div class="input-group flex-nowrap mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="addon-wrapping"><i class="fa fa-user"></i>Nombre</span>
+    </div>
+    <input disabled type="text" class="form-control" placeholder="{{ user.apellido_paterno }} {{ user.apellido_materno }} {{ user.nombre }}"
+           aria-label="Nombre"
+           aria-describedby="addon-wrapping">
+</div>
+
+<div class="input-group flex-nowrap mb-3">
+    <div class="input-group-prepend">
+            <span class="input-group-text" id="addon-wrapping">
+                {% if user.sexo == 'M' %}
+                    <i class="fa fa-mars"></i>
+                {% elif user.sexo == 'F' %}
+                    <i class="fa fa-venus"></i>
+                {% else %}
+                    <i class="fa fa-genderless"></i>
+                {% endif %}
+                Género
+            </span>
+    </div>
+
+    <input disabled type="text" class="form-control" placeholder="{{ user.sexo }}"
+           aria-label="Género"
+           aria-describedby="addon-wrapping">
+
+    <div class="input-group-prepend pl-2">
+        <span class="input-group-text" id="addon-wrapping"><i class="fa fa-birthday-cake"></i>Nacimiento</span>
+    </div>
+    <input disabled type="text" class="form-control" placeholder="{{ user.nacimiento }}"
+           aria-label="Nacimiento"
+           aria-describedby="addon-wrapping">
+</div>
+
+<div class="input-group flex-nowrap mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="addon-wrapping"><i class="fa fa-id-card"></i>CURP</span>
+    </div>
+    <input disabled type="text" class="form-control" placeholder="{{ user.curp }}"
+           aria-label="Fecha de nacimiento"
+           aria-describedby="addon-wrapping">
+</div>
+
+<div class="input-group flex-nowrap mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="addon-wrapping"><i class="fa fa-hospital"></i>NSS</span>
+    </div>
+    <input disabled type="text" class="form-control mr-2" placeholder="{{ user.nss }}"
+           aria-label="Fecha de nacimiento"
+           aria-describedby="addon-wrapping">
+
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="addon-wrapping"><i class="fa fa-syringe"></i>Tipo de sangre</span>
+    </div>
+    <input disabled type="text" class="form-control" placeholder="{{ user.sangre }}"
+           aria-label="Sangre"
+           aria-describedby="addon-wrapping">
+</div>
+
+<p class="text-muted">
+    <small class="text-muted">
+        ¿Ves algún problema con tus datos capturados? Repórtalo al correo:
+        <a href="mailto:uesvirtual@ues.mx">uesvirtual@ues.mx</a>.
+    </small>
+</p>

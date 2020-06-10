@@ -1,0 +1,14 @@
+<div class="card mb-2">
+    <div class="card-header">
+        Información del usuario
+    </div>
+
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Usuario:</strong><br>{{ ticket.user.username }}</li>
+            <li class="list-group-item"><strong>Nombre:</strong><br>{{ ticket.user.nombre|title }} {{ ticket.user.apellido_paterno|title }} {{ ticket.user.apellido_materno|title }}</li>
+            <li class="list-group-item"><strong>Email:</strong><br><a href="mailto:{{ ticket.user.email }}">{{ ticket.user.email }}</a></li>
+            <li class="list-group-item"><strong>Último ingreso:</strong><br>{{ ticket.user.last_login|timesince }}</li>
+        </ul>
+    </div>
+</div>

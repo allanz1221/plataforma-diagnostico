@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Credencial de estudiante - Inicio{% endblock title %}
+{% block header_title %}Credencial de estudiante{% endblock header_title %}
+{% block header_subtitle %}Actualiza tu información{% endblock header_subtitle %}
+{% block header_icon %}student_card{% endblock header_icon %}
+
+{% block content %}
+
+    <img id="photoPreview" class="img-fluid" height="300px" src="{{ image_data }}">
+
+    <form method="post" action="upload">
+        {% csrf_token %}
+        {{ photo_crop_form }}
+
+        <div class="text-center mt-4">
+            <a href="{% url 'student_card:home' %}" class="btn btn-outline-secondary" role="button"><i class="fa fa-undo"></i>Regresar</a>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-upload"></i>Subir imagen</button>
+        </div>
+    </form>
+
+{% endblock content %}
+
+{% block javascript %}
+    <script>
+        let $image = $('#photoPreview');
+
+        $image.cropper({
+            zoomable: false,
+            aspectRatio: 2 / 3,
+            crop: function(event) {
+                $('#id_x').val(event.detail.x);
+                $('#id_y').val(event.detail.y);
+                $('#id_width').val(event.detail.width);
+                $('#id_height').val(event.detail.height);
+            }
+        });
+    </script>
+{% endblock javascript %}

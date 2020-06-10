@@ -1,0 +1,57 @@
+<!-- <div class="card">
+    <div class="card-header">
+        Ticket de soporte #{{ ticket.id }}
+        {% if ticket.status == 'solved' %}
+            <span class="text-success">(resuelto)</span>
+        {% elif ticket.status == 'working' %}
+            <span class="text-warning">(resolviendo)</span>
+        {% else %}
+            <span class="text-danger">(pendiente)</span>
+        {% endif %}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ ticket.title }}</h5>
+        <p class="card-text">{{ ticket.description }}</p>
+        {% if ticket.file %}
+            <p class="card-text">
+                <strong><a href="{{ ticket.file.url }}" target="_blank">
+                    <i class="fa fa-file"></i>Ver documento adjunto
+                </a></strong>
+            </p>
+        {% endif %}
+    </div>
+    <div class="card-footer text-muted">
+        Creado el: {{ ticket.created_at|date }} a las {{ ticket.created_at|time }}
+    </div>
+</div> -->
+
+<h3 class="mb-3 mt-3">Ticket de soporte #{{ ticket.id }}: {{ ticket.title }}</h3>
+<div class="card">
+    <div class="card-body">
+        <div class="card-text">
+            <p>{{ ticket.description|linebreaks }}</p>
+
+            {% if ticket.file %}
+                <a href="{{ ticket.file.url }}" target="_blank">
+                    <strong><small><i class="fa fa-file"></i>Ver documento adjunto</small></strong>
+                </a>
+            {% endif %}
+
+            <div class="text-muted">
+                <small><strong>Estado del ticket:</strong>
+                        {% if ticket.status == 'solved' %}
+                            <span class="text-success">Resuelto</span>
+                        {% elif ticket.status == 'working' %}
+                            <span class="text-warning">Resolviendo</span>
+                        {% else %}
+                            <span class="text-danger">Pendiente</span>
+                        {% endif %}
+                </small>
+            </div>
+
+            <div class="text-muted">
+                <small><strong>Creado el:</strong> {{ ticket.created_at|date }} a las {{ ticket.created_at|time }}</small>
+            </div>
+        </div>
+    </div>
+</div>

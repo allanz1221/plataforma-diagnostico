@@ -1,0 +1,38 @@
+{% extends 'email_base.html' %}
+{% load exam_extras %}
+
+{% block email_title %}Resultados del examen diagnóstico{% endblock email_title %}
+
+{% block email_content %}
+
+    <p>
+        Estimado(a) aspirante, muchas gracias por realizar el examen diagnóstico para ingresar a la UES Virtual. Se te envía
+        este correo como comprobante de que realizaste el examen.
+    </p>
+
+    <p>
+        A continuación se mostrarán tus resultados.
+    </p>
+
+    <h3>Información del usuario</h3>
+    <ul>
+        <li><strong>ID:</strong> {{ user.username }}</li>
+        <li><strong>Nombre:</strong> {{ user.nombre }} {{ user.apellido_paterno }} {{ user.apellido_materno }}</li>
+        <li><strong>Correo:</strong> {{ user.email }}</li>
+        <li><strong>Inicio del examen:</strong> {{ result.start_time }}</li>
+        <li><strong>Fin del examen:</strong> {{ result.end_time }}</li>
+    </ul>
+
+    <h3>Puntuación</h3>
+    <ul>
+        {% for subject in result.get_exam.subject_set.all %}
+            <li><strong>{{ subject.title }}:</strong> {% get_subject_correct result subject_id %} / {% get_subject_total result subject_id %} </li>
+            <ul>
+                {% for section in subject.section_set.all %}
+                    <li><strong>{{ section.title }}:</strong> {% get_section_correct result section_id %} / {% get_section_total result section_id %}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+
+{% endblock email_content %}

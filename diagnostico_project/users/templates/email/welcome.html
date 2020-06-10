@@ -1,0 +1,28 @@
+{% extends 'email_base.html' %}
+
+{% block email_content %}
+    <p><strong>¡Hola {{ name|title }}!</strong> Has sido registrado(a) a la plataforma de diagnóstico de <span style="color:#c00000"><strong>UES Virtual</strong></span>. En esta plataforma
+        podrás realizar lo siguiente:</p>
+    <ol>
+        <li>Examen diagnóstico general</li>
+        <li>Subida de documentos</li>
+        <li>Información para la credencial</li>
+    </ol>
+
+    <p>Para poder ingresar, haz click en el siguiente enlace: </p> 
+    <p><a href="{{ host }}/accounts/login/">{{ host }}/accounts/login</a></p>
+    <p>Introduce la siguiente información, para iniciar sesión:</p>
+
+    <ul>
+        <li><strong>Usuario:</strong> {{ username }}</li>
+        <li><strong>Contraseña:</strong> {{ password }}</li>
+    </ul>
+    
+    <p style="color:#c00000"><strong>Consideraciones importantes:</strong></p>
+    <ul>
+        <li>Recuerda que cuentas con 120 minutos para realizar tu examen diagnóstico.</li>
+        <li>Una vez iniciado tu examen deberás terminarlo.</li>
+    </ul>
+
+    <br>
+{% endblock email_content %}

@@ -1,0 +1,58 @@
+{% extends 'modal.html' %}
+
+{% load static %}
+
+{% block modal_id %}takePhotoModal{% endblock modal_id %}
+{% block modal_title %}Tómate una foto{% endblock modal_title %}
+{% block modal_form_action %}upload{% endblock modal_form_action %}
+
+{% block modal_body %}
+    {{ photo_crop_form }}
+
+    <div class="webcam-body">
+        <div class="col">
+            <div id="cameraError" class="text-center mt-4 mb-4">
+                <span class="text-muted">
+                    <i class="fa fa-4x fa-video-slash"></i><br><br>
+                    <small>No se pudo habilitar la cámara, revisa que tengas los permisos necesarios y
+                    tengas tu <a href="https://www.google.com/chrome/">navegador actualizado</a>.</small>
+                </span>
+            </div>
+
+            <div class="text-center">
+                <video id="videoPreview" class="embed-responsive embed-responsive-4by3" autoplay="true"></video>
+                <img id="photoPreview" class="img-fluid" width="auto" height="480px">
+            </div>
+            <div class="text-center">
+                <button id="btnTakePhoto" type="button" class="btn btn-outline-primary mt-2">
+                    <i class="fa fa-play"></i>Habilitar cámara
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="instructions mt-4">
+        <small><strong>Atención:</strong> Asegúrate que la foto cumpla con las siguientes características:
+            <ul>
+                <li>Sin lentes.</li>
+                <li>Orejas descubiertas.</li>
+                <li>Esté lo más clara posible.</li>
+            </ul>
+            Si tienes problemas con la cámara, por favor trate de usar un <a href="https://www.google.com/chrome/">navegador
+            compatible</a>. O bien, puedes subir una foto que ya te hayas tomado anteriormente.
+        </small>
+    </div>
+{% endblock modal_body %}
+
+{% block modal_footer %}
+    <button id="btnPhotoCancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+    <button id="btnPhotoSubmit" type="submit" class="btn btn-primary" disabled>Aceptar</button>
+{% endblock modal_footer %}
+
+{% block modal_javascript %}
+    <script type="text/javascript" src="{% static 'js/webcam.js' %}"></script>
+{% endblock modal_javascript %}
+
+{% block modal_style %}
+    <link rel="stylesheet" href="{% static 'css/webcam.css' %}">
+{% endblock modal_style %}

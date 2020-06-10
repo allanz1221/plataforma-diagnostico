@@ -1,0 +1,61 @@
+{% load staticfiles %}
+
+<div class="comment">
+    <div class="card mt-2 md-2">
+        <div class="card-body">
+            <div class="row">
+
+                {% if comment.user.is_staff %}
+                <div class="col-md-2">
+                    {% if comment.user.sexo == 'F' %}
+                        <img src="{% static '/img/icons/user_f.svg' %}" class="img-fluid" alt="placeholder image" height="80px" width="80px"/>
+                    {% else %}
+                        <img src="{% static '/img/icons/user_m.svg' %}" class="img-fluid" alt="placeholder image" height="80px" width="80px"/>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                <div class="col">
+                    <div class="comment-author">
+                        <small>
+                        <a href="mailto:{{ comment.user.email }}">
+                            <strong>
+                                {% if comment.user.nombre %}
+                                    {{ comment.user.nombre|title }} {{ comment.user.apellido_paterno|title }} {{ comment.user.apellido_materno|title }}
+                                {% else %}
+                                    {{ comment.user.username }}
+                                {% endif %}
+                            </strong>
+                        </a>
+
+                            {% if comment.user.is_staff %}
+                                <span class="text-muted">(staff)</span>
+                            {% endif %}
+
+                            <span> - hace {{ comment.created_at|timesince }}</span>
+                        </small>
+                    </div>
+                    <p>{{ comment.text|linebreaks }}</p>
+
+                    {% if comment.file %}
+                        <p class="card-text">
+                        <small><strong><a href="{{ comment.file.url }}" target="_blank">
+                            <i class="fa fa-file"></i>Ver documento adjunto
+                        </a></strong></small></p>
+                    {% endif %}
+                </div>
+
+                {% if not comment.user.is_staff %}
+                    <div class="col-md-2">
+                        {% if comment.user.sexo == 'F' %}
+                            <img src="{% static '/img/icons/user_f.svg' %}" class="img-fluid" alt="placeholder image" height="80px" width="80px"/>
+                        {% else %}
+                            <img src="{% static '/img/icons/user_m.svg' %}" class="img-fluid" alt="placeholder image" height="80px" width="80px"/>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>

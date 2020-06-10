@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+{% block header_title %}Inicio{% endblock %}
+{% block header_icon %}rocket{% endblock %}
+
+{% block header_subtitle %}
+    Hola {% if user.nombre %}{{ user.nombre|title }}{% else %}{{ user.username }}{% endif %},
+
+    {% if user.sexo == 'M' %}
+        ¡bienvenido
+    {% elif user.sexo == 'F' %}
+        ¡bienvenida
+    {% else %}
+        ¡bienvenido(a)
+    {% endif %}
+    a la plataforma de diagnóstico UES Virtual!
+{% endblock %}
+
+{% block content %}
+
+        <h3>¿Qué tengo que hacer ahora?</h3>
+        <p><strong>¡Ya casi entras a tu universidad virtual!</strong> Ahora sólo falta completar el proceso de admisión
+            para poder continuar con tu registro. Para eso, tienes que completar las siguientes actividades:</p>
+
+        <div class="dashboard-todo mt-2 mb-2 ml-5">
+        <p>
+            <a href="{% url 'exam:home' %}"><strong>1. Realizar el examen diagnóstico (120 min)</strong></a>
+            {% if exam %}
+                <span class="text-success"><i class="fa fa-check"></i></span>
+            {% else %}
+                <span class="text-danger"><i class="fa fa-times"></i></span>
+            {% endif %}<br>
+            Realiza el examen diagnóstico para que podamos conocer tus habilidades.
+        </p>
+
+        <p>
+            <a href="{% url 'documents:home' %}"><strong>2. Subir tus documentos</strong></a>
+            {% if documents %}
+                <span class="text-success"><i class="fa fa-check"></i></span>
+            {% else %}
+                <span class="text-danger"><i class="fa fa-times"></i></span>
+            {% endif %}<br>
+            Sube las copias de tu documentación para agilizar tu proceso de inscripción.
+        </p>
+
+        <p>
+            <a href="{% url 'student_card:home' %}"><strong>3. Completar la información de tu credencial</strong></a>
+            {% if student_card %}
+                <span class="text-success"><i class="fa fa-check"></i></span>
+            {% else %}
+                <span class="text-danger"><i class="fa fa-times"></i></span>
+            {% endif %}<br>
+            Proporciona tus datos y una foto para tener más pronto tu credencial de estudiante.
+        </p>
+        </div>
+
+        {% if not exam or not documents or not student_card%}
+            <p class="text-center text-danger font-weight-bolder">¡Aún no terminas el proceso!</p>
+        {% else %}
+            <p class="text-center text-success font-weight-bolder">¡Ya terminaste!</p>
+        {% endif %}
+
+        <h3 class="mt-2">¿Qué hago una vez que termine los tres pasos?</h3>
+
+        <p>Una vez terminadas las tres actividades, <strong>tendrás que esperarte a que te contactemos</strong> por
+        correo electrónico.</p>
+
+        <p>Si tienes alguna duda respecto a cualquier actividad, puedes revisar la sección de <a href="{% url 'core:faq' %}">preguntas frecuentes</a>, o
+        contactar directamente al equipo técnico a través del correo <a href="mailto:uesvirtual@ues.mx">uesvirtual@ues.mx</a> </p>
+
+{% endblock content %}
+
+{% block sidebar_content %}
+{% endblock %}

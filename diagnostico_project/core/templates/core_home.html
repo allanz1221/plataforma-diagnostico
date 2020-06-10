@@ -1,0 +1,103 @@
+{% load static %}
+
+<!doctype html>
+<html lang="es">
+    <head>
+        {% include 'head.html' %}
+        <title>UES Virtual - Plataforma diagnóstico</title>
+    </head>
+<body>
+
+{% include "navbar.html" %}
+
+<header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <h1 class="mb-3 landing-title font-weight-normal">UES Virtual - Plataforma diagnóstico</h1>
+                <h2 class="mb-5 landing-subtitle font-weight-light">¡Bienvenido(a) a la plataforma diagnóstico para el ingreso a tu nueva universidad
+                    virtual!</h2>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="sections text-center bg-light">
+    <div class="container">
+        <h2 class="mb-5">Instrucciones</h2>
+        <p class="font-weight-light mb-5">
+            Para poder entrar a la plataforma, es necesario que te hayas inscrito como <a href="https://aspirantes.ues.mx/login.aspx">aspirante</a> en alguna
+            de nuestras <a href="https://ues.mx/?p=especiales/ofertaeducativa/">carreras virtuales</a>. Una vez que estés inscrito, y hayas realizado el pago del examen,
+            <strong>se te enviará un correo con los datos para accesar</strong> a esta plataforma.
+        </p>
+
+        <p class="font-weight-light mb-0">
+            En esta plataforma, tendrás que realizar un <strong>examen diagnóstico</strong> para que podamos conocer tus
+            fortalezas y tus debilidades, así como proporcionarnos una <strong>copia de tus documentos escaneados</strong>.
+        </p>
+    </div>
+</section>
+
+<section class="sections bg-light text-center highlight">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-feature">
+                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                    <div class="features-icons-icon d-flex">
+                        <i class="fa fa-3x fa-graduation-cap m-auto landing-icon"></i>
+                    </div>
+                    <h3>Realiza el examen diagnóstico</h3>
+                </div>
+            </div>
+            <div class="col-lg-4 col-feature">
+                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                    <div class="features-icons-icon d-flex">
+                        <i class="fa fa-3x fa-file-alt m-auto landing-icon"></i>
+                    </div>
+                    <h3>Sube tu documentación</h3>
+                </div>
+            </div>
+            <div class="col-lg-4 col-feature">
+                <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                    <div class="features-icons-icon d-flex">
+                        <i class="fa fa-3x fa-id-card m-auto landing-icon"></i>
+                    </div>
+                    <h3>Completa los datos de tu credencial</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="sections text-center bg-light">
+    <div class="container">
+        <h2 id="start" class="mb-5">¡Vamos a empezar!</h2>
+        <p class="font-weight-light mb-5"><strong>
+            ¿Ya está todo listo para hacer el examen?</strong> Haz click en el
+            botón para entrar:
+        </p>
+        <a href="{% url 'login' %}" class="btn btn-outline-warning btn-lg">Empezar el examen</a>
+    </div>
+</section>
+
+{% include "footer.html" %}
+
+<!-- Scripts -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<!-- Jquery plugins -->
+<script type="text/javascript" src="{% static 'js/cropper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery-cropper.min.js' %}"></script>
+
+<!-- Local scripts -->
+{% block javascript %}
+{% endblock javascript %}
+
+<!-- Analytics -->
+{% include 'analytics.html' %}
+
+</body>
+</html>

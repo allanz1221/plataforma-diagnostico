@@ -1,0 +1,22 @@
+{% load exam_extras %}
+
+<div class="section section-{{ section.id }}">
+    <h4><span style="color: #5E292A">{% roman forloop.counter %}.</span> {{ section.title|title }}</h4>
+
+    {% if section.instructions %}
+        <div class="instructions">
+            <p>{{ section.instructions }}</p>
+        </div>
+    {% endif %}
+
+    {% if section.extra %}
+
+        {% include 'partials/exam_answering_partial_section_extra.html' %}
+
+    {% endif %}
+        <ol>
+            {% for question in section.question_set.all %}
+                {% include 'partials/exam_answering_partial_question.html' %}
+            {% endfor %}
+        </ol>
+</div>

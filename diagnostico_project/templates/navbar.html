@@ -1,0 +1,19 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-md navbar-light navbar-bg-light">
+    <a class="navbar-brand " href="{% url 'core:home' %}">
+        <img src="{% static 'img/ues-navbar-logo-full.png' %}"
+             width="auto" height="40" class="d-inline-block align-center" alt="Logo UES">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    {% include 'navbar_left.html' %}
+
+    {% include 'navbar_right.html' %}
+
+</nav>

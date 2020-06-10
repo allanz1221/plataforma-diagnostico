@@ -1,0 +1,12 @@
+<div class="card extra-content extra-content-{{ section.extra.id }}">
+    <div class="card-body">
+        <h5 class="card-title">{{ section.extra.title }}</h5>
+        {% if section.extra.image %}
+            <div class="extra-image extra-image-{{ section.extra.id }}">
+                <img src="{{ section.extra.image.url }}"
+                     alt="Extra image {{ secion.extra.id }}">
+            </div>
+        {% endif %}
+        <p class="card-text text-justify">{{ section.extra.text|safe }}</p>
+    </div>
+</div>

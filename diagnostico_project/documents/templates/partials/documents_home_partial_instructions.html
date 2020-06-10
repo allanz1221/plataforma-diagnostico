@@ -1,0 +1,15 @@
+<h3 class="mb-2">Lista de documentos</h3>
+<p>
+    Para agilizar el proceso de tu inscripción, es necesario que subas al sistema una copia de tus siguientes
+    documentos:
+</p>
+
+<ul>
+    {% for category in categories %}
+        <li><strong>{{ category }}</strong>: {{ category.description }}</li>
+    {% endfor %}
+</ul>
+
+<p>
+    Una vez que subas todos estos documentos, se dará por terminado este paso.
+</p>

@@ -1,0 +1,16 @@
+<div class="answer answer-{{ answer.id }} mt-2 mb-2">
+    <span style="font-weight: normal;">
+        <label class="exam-label">
+            <input type="radio" name="{{ question.id }}" value="{{ answer.id }}" />
+            {% if answer.image %}
+                <img class="image-fluid" src="{{ answer.image.url }}" height="80px" alt="Image {{ answer.id }}">
+            {% endif %}
+            {% if answer.text %}
+                <span class="answer-text">{{ answer.text|safe }}</span>
+            {% endif %}
+            {% if user.is_staff and answer.is_correct %}
+                <span class="text-success"><i class="fa fa-check"></i></span>
+            {% endif %}
+        </label>
+    </span>
+</div>

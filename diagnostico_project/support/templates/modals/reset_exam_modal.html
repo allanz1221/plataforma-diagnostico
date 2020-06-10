@@ -1,0 +1,30 @@
+<div class="modal fade" id="resetExamModalCenter" tabindex="-1" role="dialog" aria-labelledby="resetExamModalTitleCenter" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="resetExamModalLongTitle">Reiniciar examen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          {% if result %}
+              <p>¿En realidad quieres <strong>reiniciar</strong> el examen y del siguiente usuario?</p>
+              <p><strong>Resultados</strong></p>
+              {% include 'modals/reset_exam_modal_results.html' %}
+          {% else %}
+            <p>El usuario aún no ha realizado el examen.</p>
+          {% endif %}
+      </div>
+      <div class="modal-footer">
+          <form method="post" action="{{ ticket.id }}/reset">
+              {% csrf_token %}
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              {% if result %}
+                  <button type="submit" class="btn btn-danger"><i class="fa fa-redo"></i>Reiniciar</button>
+              {% endif %}
+          </form>
+      </div>
+    </div>
+  </div>
+</div>

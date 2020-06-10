@@ -1,0 +1,18 @@
+{% load static %}
+
+<h4>Fotografía</h4>
+<div class="photo text-center">
+    {% if card_info.photo %}
+        <img src="{{ card_info.photo.url }}" class="img-fluid" alt="Foto del aspirante" height="200px" width="250px"/>
+    {% else %}
+        {% if user.sexo == 'F' %}
+            <img src="{% static 'img/icons/user_f.svg' %}" style="opacity: 0.3;" class="img-fluid" alt="placeholder image" height="200px" width="250px"/>
+        {% else %}
+            <img src="{% static 'img/icons/user_m.svg' %}" style="opacity: 0.3;" class="img-fluid" alt="placeholder image" height="200px" width="250px"/>
+        {% endif %}
+    {% endif %}
+</div>
+<div class="text-center mt-2">
+    <!-- <a href="#" class="btn btn-sm btn-block btn-primary" data-toggle="modal" data-target="#takePhotoModal"><i class="fa fa-camera"></i>Tomarse una foto</a> -->
+    <a href="#" class="btn btn-sm btn-block btn-primary" data-toggle="modal" data-target="#uploadPhotoModal"><i class="fa fa-upload"></i>Subir una foto</a>
+</div>

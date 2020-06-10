@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% load documents_extras %}
+
+{% block title %}Soporte{% endblock title %}
+{% block header_title %}Soporte{% endblock header_title %}
+{% block header_subtitle %}
+    En caso de que tengas algún problema con tu adminsión, puedes contactar al equipo técnico por este medio
+{% endblock header_subtitle %}
+{% block header_icon %}support{% endblock header_icon %}
+
+{% block content %}
+    {% if object_list %}
+        {% include 'partials/support_home_partial_ticket_table.html' %}
+    {% else %}
+        <p>¡Aún no has abierto ningún ticket de soporte!</p>
+    {% endif %}
+
+    <div class="text-center">
+        <a href="{% url 'support:ticket_create' %}" class="btn btn-primary"><i class="fa fa-plus"></i>Añadir ticket</a>
+    </div>
+{% endblock %}

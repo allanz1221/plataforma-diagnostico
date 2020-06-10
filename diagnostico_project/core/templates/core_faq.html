@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Preguntas frecuentes{% endblock %}
+{% block header_title %}Preguntas frecuentes{% endblock %}
+{% block header_subtitle %}
+    En esta sección podrás encontrar las respuestas a preguntas frecuentes de la plataforma
+{% endblock %}
+{% block header_icon %}faq{% endblock %}
+
+{% block content %}
+    {% if object_list %}
+        <div id="faqAccordion" class="accordion">
+            {% for item in object_list %}
+                <div id="heading-{{ item.id }}">
+                    <a data-toggle="collapse" data-target="#collapse-{{ item.id }}"
+                       aria-expanded="true" aria-controls="collapse-{{ item.id }}">
+                        <h3 class="mt-2 mb-2">{{ item.question }}</h3>
+                    </a>
+                    <div id="collapse-{{ item.id }}" class="{% if forloop.first %}show{% else %}collapse{% endif %} mb-2"
+                         aria-labelledby="heading-{{ item.id }}" data-parent="#faqAccordion">
+                        <p>
+                            {{ item.answer|safe }}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>¡No está registrada ninguna pregunta!</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Examen diagnóstico - Terminado{% endblock title %}
+{% block header_title %}Examen diagnóstico{% endblock header_title %}
+{% block header_subtitle %}Terminado{% endblock header_subtitle %}
+{% block header_icon %}exam{% endblock header_icon %}
+
+{% block content %}
+    <h3>¡Ya terminaste tu examen diagnóstico!</h3>
+    <p>
+        <strong>¡Bien hecho!</strong> Muchas gracias por realizar el examen.
+    </p>
+
+    {% include 'partials/exam_finished_partial_see_results.html' %}
+
+{% endblock content %}

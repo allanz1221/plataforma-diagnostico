@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Inicio de sesión{% endblock title %}
+{% block header_title %}Inicio de sesión{% endblock header_title %}
+{% block header_subtitle %}Usa la información que se te envió a tu correo para iniciar{% endblock header_subtitle %}
+{% block header_icon %}accounts{% endblock header_icon %}
+
+{% block content %}
+    <h3>Ingresa tus datos</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-primary" type="submit">Entrar</button>
+    </form>
+
+    <div class="instructions mt-4">
+        <p><small>Si recibiste el correo con tus datos, pero <strong>no te acuerdas de tu contraseña</strong>, puedes
+            <a href="{% url 'password_reset' %}">solicitar un cambio de contraseña</a>.</small></p>
+    </div>
+
+    <h3>¿No puedes entrar?</h3>
+    <p>Si ya te <a href="https://aspirantes.ues.mx/login.aspx">registraste como aspirante</a>, <strong>ya pagaste tu examen</strong>, y aún así <strong>
+        no recibes el correo con tus datos</strong>. Por favor comunícate lo más pronto con nosotros al correo: <a
+            href="mailto:uesvirtual@ues.mx">uesvirtual@ues.mx</a>.
+    </p>
+{% endblock content %}

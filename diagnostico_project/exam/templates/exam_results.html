@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load exam_extras %}
+
+{% block title %}Examen diagnóstico - Resultados{% endblock title %}
+{% block header_title %}Examen diagnóstico{% endblock header_title %}
+{% block header_subtitle %}Resultados{% endblock header_subtitle %}
+{% block header_icon %}exam{% endblock header_icon %}
+
+{% block content %}
+    <h3>Tus resultados</h3>
+    <!-- TODO -->
+    <p><strong>Puntuación:</strong> {{ result.get_correct_answers_count }} / {{ result.get_questions_count }}</p>
+
+    <h3>Reporte detallado de resultados</h3>
+    <ul>
+        <li><strong>ID Aspirante:</strong> {{ result.user.username }}</li>
+        <li><strong>Nombre:</strong> {{ result.user.apellido_paterno }} {{ result.user.apellido_materno }} {{ result.user.nombre }}</li>
+        <ul>
+            {% for subject in result.exam.subject_set.all %}
+                <li><strong>{{ subject.title }}:</strong> {% get_subject_correct result subject.id %} / {% get_subject_total result subject.id %} </li>
+            {% endfor %}
+        </ul>
+        <li><strong>Inicio de examen:</strong> {{ result.start_time }}</li>
+        <li><strong>Fin de examen:</strong> {{ result.end_time }}</li>
+        <li><strong>Tiempo total:</strong> {{ result.get_total_time }}</li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,7 @@
+<div class="subject subject-{{ subject.id }}">
+    <h3>{{ subject.title|title }}</h3>
+
+    {% for section in subject.section_set.all %}
+        {% include 'partials/exam_answering_partial_section.html' %}
+    {% endfor %}
+</div>

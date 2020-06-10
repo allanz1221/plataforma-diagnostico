@@ -1,0 +1,21 @@
+{% extends 'email_base.html' %}
+
+{% block email_title %}
+    Seguimiento al ticket: {{ ticket.title }}
+{% endblock email_title %}
+
+{% block email_content %}
+    <p>
+        ¡Hola de nuevo, {{ ticket.user.nombre|title }}!
+        Un administrador te ha respondido en tu ticket con el siguiente mensaje:
+    </p>
+
+    <blockquote>
+        {{ comment|linebreaks }}
+    </blockquote>
+
+    <p>
+        Para ver más detalles, haz click <a href="{{ host }}{{ ticket.get_absolute_url }}">aquí</a>.
+    </p>
+
+{% endblock email_content %}

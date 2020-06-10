@@ -1,0 +1,15 @@
+{% load crispy_forms_tags %}
+
+<h4>
+    Otra información
+</h4>
+
+<p>En caso de emergencia, se contactará a:</p>
+
+<form method="post" action="update">
+    {% csrf_token %}
+    {{ student_card_emergency_form|crispy }}
+    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-save"></i>Guardar datos</button>
+</form>
+
+

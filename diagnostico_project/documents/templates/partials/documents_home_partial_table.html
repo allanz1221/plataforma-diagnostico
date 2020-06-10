@@ -1,0 +1,54 @@
+{% load documents_extras %}
+
+<h3 class="mb-3">Tus documentos</h3>
+
+{% if object_list %}
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Tipo de documento</th>
+                <th scope="col">Documento</th>
+                <th scope="col">Comentario</th>
+                <th scope="col">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% regroup object_list by category as categories %}
+            {% for category in categories %}
+                {% for document in category.list %}
+                    <tr>
+                        {% ifchanged %}
+                            <th rowspan="{{ category.list|length }}">{{ document.category.name }}</th>
+                        {% endifchanged %}
+
+                        <td>
+                            <a href="/diagnostico/media/{{ document.file }}" target="_blank">
+                                {{ document.file|clean_filename }}
+                            </a>
+                        </td>
+
+                        <td>
+                            {{ document.comment }}
+                        </td>
+
+                        <td class="text-center">
+                            <button type="button" class="btn btn-link text-danger" data-toggle="modal" data-target="#documentsModalDeleteForm"
+                                    onclick="deleteDocument({{ document.id }}, '{{ document.file|clean_filename }}')">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% include 'pagination.html' %}
+
+{% else %}
+
+    <p>¡Aún no subes ningún documento!</p>
+
+{% endif %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% load documents_extras %}
+
+{% block title %}Documentos - Inicio{% endblock title %}
+{% block header_title %}Documentos{% endblock header_title %}
+{% block header_subtitle %}Sube tus documentos{% endblock header_subtitle %}
+{% block header_icon %}documents{% endblock header_icon %}
+
+{% block content %}
+    {% if categories %}
+        {% include 'partials/documents_home_partial_instructions.html' %}
+
+        {% include 'partials/documents_home_partial_table.html' %}
+
+        {% include 'partials/documents_home_partial_upload.html' %}
+
+        <!-- Modals -->
+        {% include 'modals/documents_upload_modal.html' %}
+
+        {% include 'modals/documents_delete_modal.html' %}
+
+    {% else %}
+
+        {% include 'partials/documents_home_partial_error.html' %}
+
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'modal.html' %}
+
+{% load static %}
+
+{% block modal_id %}uploadPhotoModal{% endblock modal_id %}
+{% block modal_title %}Sube una foto{% endblock modal_title %}
+{% block modal_form_action %}crop{% endblock modal_form_action %}
+{% block modal_form_extras %}enctype="multipart/form-data"{% endblock %}
+
+{% block modal_body %}
+    {{ photo_upload_form }}
+{% endblock modal_body %}
+
+{% block modal_footer %}
+    <button id="btnPhotoCancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+    <button id="btnPhotoSubmit" type="submit" class="btn btn-primary">Subir foto</button>
+{% endblock modal_footer %}
+
+{% block modal_javascript %}
+{% endblock modal_javascript %}
+
+{% block modal_style %}
+{% endblock modal_style %}

@@ -1,0 +1,17 @@
+{% load core_extras %}
+
+{% if user.is_authenticated %}
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link {{ request.path|get_active:"exam" }} == 'exam' %}" href="{% url 'exam:home' %}"><i class="fa fa-graduation-cap"></i> Examen diagnóstico</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request.path|get_active:"documents" }}" href="{% url 'documents:home' %}"><i class="fa fa-file-alt"></i> Subir documentación</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request.path|get_active:"student_card" }}" href="{% url 'student_card:home' %}"><i class="fa fa-id-card"></i> Credencial</a>
+            </li>
+        </ul>
+    </div>
+{% endif %}

@@ -1,0 +1,33 @@
+{% load crispy_forms_tags %}
+
+{% block modal_style %}{% endblock modal_style %}
+
+<div class="modal fade" id="{% block modal_id %}{% endblock %}" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">{% block modal_title %}{% endblock %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="{% block modal_form_action %}{% endblock modal_form_action %}" {% block modal_form_extras %}{% endblock %}>
+                {% csrf_token %}
+                <div class="modal-body">
+                    {% block modal_body %}
+                        <p>Modal body</p>
+                    {% endblock modal_body %}
+                </div>
+                <div class="modal-footer">
+                    {% block modal_footer %}
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    {% endblock modal_footer %}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% block modal_javascript %}
+{% endblock modal_javascript%}

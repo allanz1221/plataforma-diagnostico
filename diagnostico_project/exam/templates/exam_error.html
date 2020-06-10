@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Examen diagnóstico - Error{% endblock title %}
+{% block header_title %}Examen diagnóstico{% endblock header_title %}
+{% block header_subtitle %}Error{% endblock header_subtitle %}
+{% block header_icon %}exam{% endblock header_icon %}
+
+{% block content %}
+    <p>
+        <strong>¡Oh no!</strong> Parece que se produjo un error al momento de enviar tu examen. Por favor
+        <a href="/exam">vuelva a intentarlo</a> una vez más.
+    </p>
+
+    <p>
+        Si los problemas persisten, ponte en contacto con nuestro equipo técnico a través del correo:
+        <a href="mailto:uesvirtual@ues.mx">uesvirtual@ues.mx</a> para poder ayudarte en cuanto antes.
+        Indícales que es un problema con el <strong>resultado número {{ result.id }}</strong>.
+    </p>
+{% endblock content %}

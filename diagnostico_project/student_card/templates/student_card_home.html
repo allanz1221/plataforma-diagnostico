@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Credencial de estudiante - Inicio{% endblock title %}
+{% block header_title %}Credencial de estudiante{% endblock header_title %}
+{% block header_subtitle %}Actualiza tu información{% endblock header_subtitle %}
+{% block header_icon %}student_card{% endblock header_icon %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-3">
+
+            {% include 'partials/student_card_home_partial_photo.html' %}
+
+        </div>
+
+        <div class="col-lg">
+
+            {% include 'partials/student_card_home_partial_personal_info.html' %}
+
+            {% include 'partials/student_card_home_partial_other_info.html' %}
+
+        </div>
+    </div>
+
+    <!-- Modals -->
+    {% include 'modals/student_card_take_photo_modal.html' %}
+    {% include 'modals/student_card_upload_photo_modal.html' %}
+
+{% endblock content %}

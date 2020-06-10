@@ -1,0 +1,49 @@
+version: "2.0"
+services:
+  db:
+    container_name: ues_diagnostico_v2_db
+    image: postgres:11.2
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./sql:/scripts
+
+  rabbit:
+    hostname: rabbit
+    container_name: ues_diagnostico_v2_rabbit
+    image: rabbitmq:3.7
+    restart: always
+    env_file:
+     - .env
+
+  django:
+    container_name: ues_diagnostico_v2_django
+    build: ./diagnostico_project
+    restart: always
+    links:
+      - db
+      - rabbit
+    depends_on:
+       - db
+    ports:
+      - "8888:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./:/app
+
+  worker:
+    container_name: ues_diagnostico_v2_celery
+    build: ./diagnostico_project
+    command: celery -A diagnostico_project worker -l info
+    restart: always
+    volumes:
+      - ./:/app
+    links:
+      - db
+      - rabbit
+    depends_on:
+      - rabbit
+    env_file:
+      - .env

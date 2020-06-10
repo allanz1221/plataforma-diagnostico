@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Examen diagnóstico - Tiempo agotado{% endblock title %}
+{% block header_title %}Examen diagnóstico{% endblock header_title %}
+{% block header_subtitle %}Tiempo agotado{% endblock header_subtitle %}
+{% block header_icon %}exam{% endblock header_icon %}
+
+{% block content %}
+    <h3>¡Se te agotó el tiempo!</h3>
+    <p>
+        <strong>¡Se pasó el tiempo de entrega!</strong> El examen tenía que haberse terminado
+        para las <strong>{{ result.deadline|time }} horas del {{ result.deadline|date }}</strong>,
+        y lo terminaste a las <strong>{{ result.end_time|time }} horas del {{ result.end_time|date }}</strong>.
+    </p>
+
+    <p>
+        Si crees que se terminó el examen por un error del sistema, puedes ponerte en contacto con el
+        equipo técnico por medio del correo <a href="mailto:uesvirtual@ues.mx">uesvirtual@ues.mx</a>.
+        {% if result %}Indícales que hay problemas con el <strong>resultado número {{ result.id }}</strong>.{% endif %}
+    </p>
+
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load exam_extras %}
+
+{% block title %}Examen diagnóstico - Examen{% endblock title %}
+{% block header_title %}Examen diagnóstico{% endblock header_title %}
+{% block header_subtitle %}Examen{% endblock header_subtitle %}
+{% block header_icon %}exam{% endblock header_icon %}
+
+{% block content %}
+    <div class="exam">
+        <form method="post" id="examForm" onkeydown="return event.key != 'Enter';">
+            {% csrf_token %}
+
+            {% for subject in exam.subject_set.all %}
+
+                {% include 'partials/exam_answering_partial_subject.html' %}
+
+            {% endfor %}
+
+            {% include 'partials/exam_answering_partial_submit.html' %}
+
+            <!-- Modals -->
+            {% include 'modals/exam_answering_confirmation_modal.html' %}
+        </form>
+    </div>
+{% endblock content %}
+
+{% block extra_content %}
+    {% include 'partials/exam_answering_partial_timer.html' %}
+{% endblock extra_content %}
+
+{% block javascript %}
+    <script src="{% static 'js/timer.js' %}"></script>
+    <script>
+        setTimer('{{ result.deadline|date:"U" }}')
+    </script>
+{% endblock %}

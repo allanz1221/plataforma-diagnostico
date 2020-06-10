@@ -1,0 +1,35 @@
+{% load crispy_forms_tags %}
+
+<div class="modal fade" id="documentsModalDeleteForm" tabindex="-1" role="dialog" aria-labelledby="documentsModalDeleteFormCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form method="post" action="delete">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="documentsModalDeleteFormCenterTitle">Eliminar documento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% csrf_token %}
+                    <input id="deleteDocumentId" type="hidden" name="document_id" value="document_id">
+                    <p>
+                        ¿En verdad quieres elimar el documento <span id="documentName" class="text-danger"></span>?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function deleteDocument(id, name) {
+        console.log('Deleting document:', id);
+        document.getElementById('deleteDocumentId').value = id;
+        document.getElementById('documentName').innerText = name;
+    }
+</script>

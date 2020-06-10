@@ -1,0 +1,41 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Título</th>
+            <th scope="col">Problema</th>
+            {% if request.user.is_staff %}<th scope="col">Usuario</th>{% endif %}
+            <th scope="col">Respuestas</th>
+            <th scope="col">Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ticket in object_list %}
+            <tr>
+                <th>{{ ticket.id }}</th>
+                <td>
+                    <a href="{% url 'support:ticket_detail' ticket.id %}">{{ ticket.title }}</a>
+                </td>
+                <td>{{ ticket.task }}</td>
+                {% if request.user.is_staff %}<td><span data-toggle="tooltip"
+                                                        title="{{ ticket.user.nombre }} {{ ticket.user.apellido_paterno }} {{ ticket.user.apellido_materno }}">{{ ticket.user.username }}</span></td>{% endif %}
+                <td>{{ ticket.comments.count }}</td>
+                <td>
+                    {% if ticket.status == 'solved' %}
+                        <span class="text-success"><i class="fa fa-check-circle"></i>Resuelto</span>
+                    {% elif ticket.status == 'working' %}
+                        <span class="text-warning"><i class="fa fa-ellipsis-h"></i>Resolviendo</span>
+                    {% else %}
+                        <span class="text-danger"><i class="fa fa-exclamation-circle"></i>Pendiente</span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if is_paginated %}
+    {% include 'pagination.html' %}
+{% endif %}

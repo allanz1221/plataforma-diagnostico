@@ -1,0 +1,25 @@
+{% extends 'email_base.html' %}
+
+{% block email_title %}
+    Nuevo ticket: {{ ticket.title }}
+{% endblock email_title %}
+
+{% block email_content %}
+    <p>
+        ¡Hola, {{ ticket.user.nombre|title }}! Se te envía este correo para
+        avisarte que acabas de crear un ticket de soporte con el siguiente contenido:
+    </p>
+
+    <blockquote>
+        {{ ticket.description|linebreaks }}
+    </blockquote>
+
+    <p>
+        Para verlo, puedes hacer click <a href="{{ host }}{{ ticket.get_absolute_url }}">aquí</a>.
+    </p>
+
+    <p>
+        <strong>Nuestro equipo técnico ha sido notificado y muy pronto un administrador se pondrá en
+            contacto contigo.</strong>
+    </p>
+{% endblock email_content %}

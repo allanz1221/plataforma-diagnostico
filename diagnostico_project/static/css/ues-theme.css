@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
+
+body {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #eee !important;
+}
+
+a {
+    color: #0075b4;
+    transition: all 0.1s linear 0s;
+}
+
+a:hover {
+    color: #065683;
+    transition: all 0.1s linear 0s;
+    text-decoration: none;
+}
+
+.fa {
+    margin-right: 5px;
+}
+
+/* ==========================================================================*/
+/*   NAVBAR                                                                  */
+/* ==========================================================================*/
+.navbar {
+    padding: 1.2rem;
+    border-top: solid #f5aa00 4px!important;
+}
+
+.navbar .nav-link {
+    color: #222222;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+    color: #5E292A;
+}
+
+.navbar .bg-light {
+    color: #5E292A;
+    background-color: #f5aa00!important;
+}
+
+.bg-dark {
+    background-color: #5E292A!important;
+}
+
+/* ==========================================================================*/
+/*   FOOTER                                                                  */
+/* ==========================================================================*/
+.footer {
+    color: #eeeeee!important;
+    background-color: #222222;
+    line-height: 1.2rem;
+}
+
+.footer .text-muted {
+    color: rgba(255,255,255,.5)!important;
+}
+
+.footer img {
+  height: 50px;
+  opacity: 0.75;
+}
+
+.footer a {
+    color: white!important;
+    opacity: 0.75;
+}
+
+/* ==========================================================================*/
+/*   HEADER                                                                  */
+/* ==========================================================================*/
+
+header {
+    background: #5E292A url("/diagnostico/static/img/bg3.jpg") no-repeat center center fixed;
+    color: #eeeeee!important;
+}
+
+header img.img-fluid {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+header h2 {
+    font-size: 1.2rem;
+}
+
+/* ==========================================================================*/
+/*    FAQ                                                                    */
+/* ==========================================================================*/
+.accordion h3 {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.accordion h3:hover {
+    cursor: pointer;
+}
+
+.accordion h3:before {
+    font-size: 1.3rem!important;
+}
+
+/* ==========================================================================*/
+/*   EXAM                                                                    */
+/* ==========================================================================*/
+.exam .subject h3 {
+    font-size: 1.75rem;
+}
+
+.exam .subject .section h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.exam .subject .section h4:before {
+    content: ''!important;
+}
+
+label.exam-label {
+    display: inherit!important;
+}
+
+/* STICKY TIMER */
+#stickyTimer {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+}
+
+.sticky-timer-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #5e292a;
+    color: #5e292a;
+    height: 70px;
+    width: 230px;
+}
+
+/* ==========================================================================*/
+/*   LANDING                                                                 */
+/* ==========================================================================*/
+header.masthead {
+    position: relative;
+    background: #5E292A url("/diagnostico/static/img/bg1.jpg") no-repeat center center fixed;
+    padding-top: 13rem;
+    padding-bottom: 13rem;
+}
+
+header h1 {
+    text-shadow: rgba(0, 0, 0, 0.5) 0 0 10px;
+}
+
+header h2 {
+    text-shadow: rgba(0, 0, 0, 0.5) 0 0 10px;
+}
+
+.overlay {
+    position: absolute;
+    background-color: #222222;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.sections {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.sections h3:before{
+    content: none!important;
+}
+
+.sections .features-icons-item .features-icons-icon {
+    height: 5rem;
+}
+
+section.sections.bg-light.text-center.highlight {
+    background: #f5aa00 url("/diagnostico/static/img/bg2.jpg") no-repeat center center fixed;
+    color: white;
+    text-shadow: rgba(0, 0, 0, 0.5) 0 0 4px;
+}
+
+section.sections.bg-light.text-center.highlight.lead {
+    font-size: small;
+}
+
+.d-flex {
+    display: -ms-flexbox!important;
+    display: flex!important;
+}
+
+.landing-icon {
+}
+
+.landing-title {
+    font-size: 2.8em!important;
+}
+
+.landing-subtitle {
+    font-size: 1.3em;
+    line-height: 2rem;
+}
+
+h3 {
+    font-weight: lighter;
+}
+
+h3:before {
+    font-family: "Font Awesome 5 Free", serif;
+    content: '\f101';
+    color: #5E292A;
+    padding-right: 4px;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-weight: lighter;
+}
+
+h4:before {
+    font-family: "Font Awesome 5 Free", serif;
+    content: '\f101';
+    color: #5E292A;
+    padding-right: 4px;
+    font-weight: 600;
+}
+

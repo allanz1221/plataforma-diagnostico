@@ -1,0 +1,17 @@
+{% load exam_extras %}
+
+<strong>Información del usuario</strong>
+<ul>
+    <li><strong>ID:</strong> {{ ticket.user.username }}</li>
+    <li><strong>Nombre:</strong> {{ ticket.user.nombre }} {{ ticket.user.apellido_paterno }} {{ ticket.user.apellido_materno }}</li>
+    <li><strong>Correo:</strong> {{ ticket.user.email }}</li>
+    <li><strong>Inicio del examen:</strong> {{ result.start_time }}</li>
+    <li><strong>Fin del examen:</strong> {{ result.end_time }}</li>
+</ul>
+
+<strong>Puntuación</strong>
+<ul>
+    {% for subject in result.exam.subject_set.all %}
+        <li><strong>{{ subject.title }}:</strong> {% get_subject_correct result subject.id %} / {% get_subject_total result subject.id %} </li>
+    {% endfor %}
+</ul>
